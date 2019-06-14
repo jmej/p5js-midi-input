@@ -43,11 +43,10 @@ function setup () {
 
         // Grow the tree
         if (msg.type === msg.NOTE_ON) {
-            fill(254, 127, 156);
-            ellipse(width/2, height/2, 300, 300);
+            drawThing = true;
             
         } else if (msg.type === msg.NOTE_OFF) {
-
+            drawThing = false;
         }
     }
 
@@ -62,6 +61,10 @@ function setup () {
 
 function draw() {
     background(0);
+    if (drawThing){
+        fill(254, 127, 156);
+        ellipse(width/2, height/2, 300, 300);
+    }
     for (var i = 0; i < NUM_KEYS; i++) {
         keys[i].draw();
     }
