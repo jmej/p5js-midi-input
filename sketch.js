@@ -1,6 +1,7 @@
 
 var drawThing = false;
 
+
 function Key(index, key_w, key_h) {
     this.index = index;
     this.width = key_w - 4;
@@ -13,8 +14,10 @@ function Key(index, key_w, key_h) {
     this.colour_on = _.range(16).map(i => color(Math.round((i + 7) % 16 * 360 / 16), 100, 100, 1));
 
     this.draw = function () {
-        fill(254, 127, 156);
-        ellipse(width/2, height/2, 300, 300);;
+        if (this.type == NOTE_ON){
+            fill(254, 127, 156);
+            ellipse(width/2, height/2, 300, 300);
+        }
     }
 }
 
@@ -27,6 +30,7 @@ function setup () {
     frameRate(12);
     colorMode(HSB); // Max values: 360, 100, 100, 1
     textFont('monospace');
+  //capture.hide();
 
     midiInput = new MIDIInput();
     midiInput.onMIDIMessage = function (data) {
