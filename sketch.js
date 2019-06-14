@@ -62,6 +62,7 @@ function setup () {
 function draw() {
     background(0);
     if (drawThing){
+        console.log("drawing a thing");
         fill(254, 127, 156);
         ellipse(width/2, height/2, 300, 300);
     }
