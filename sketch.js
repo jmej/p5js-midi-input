@@ -13,14 +13,8 @@ function Key(index, key_w, key_h) {
     this.colour_on = _.range(16).map(i => color(Math.round((i + 7) % 16 * 360 / 16), 100, 100, 1));
 
     this.draw = function () {
-        // Always draw the empty key first, assuming note is off
-        fill(this.colour_off);
-        rect(this.left_edge, height - this.height, this.width, this.height);
-        // Draw coloured key based on velocity (will end up transparent for NOTE_OFF since velocity=0)
-        this.colour_on[this.channel]._array[3] = this.velocity;
-        // console.log(this.colour_on[this.channel]);
-        fill(this.colour_on[this.channel]);
-        rect(this.left_edge, height - this.height, this.width, this.height);
+        fill(254, 127, 156);
+        ellipse(width/2, height/2, 300, 300);;
     }
 }
 
@@ -44,12 +38,7 @@ function setup () {
         keys[msg.note].velocity = Math.round(msg.velocity / 127 * 100) / 100;;
 
         // Grow the tree
-        if (msg.type === msg.NOTE_ON) {
-            drawThing = true;
-            
-        } else if (msg.type === msg.NOTE_OFF) {
-            drawThing = false;
-        }
+
     }
 
     // Key display
@@ -63,11 +52,7 @@ function setup () {
 
 function draw() {
     background(0);
-    if (drawThing){
-        console.log("drawing a thing");
-        fill(254, 127, 156);
-        ellipse(width/2, height/2, 300, 300);
-    }
+
     for (var i = 0; i < NUM_KEYS; i++) {
         keys[i].draw();
     }
