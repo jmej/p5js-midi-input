@@ -1,4 +1,6 @@
 
+var drawThing = false;
+
 function Key(index, key_w, key_h) {
     this.index = index;
     this.width = key_w - 4;
