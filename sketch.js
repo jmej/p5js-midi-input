@@ -34,6 +34,7 @@ function setup () {
 
     midiInput = new MIDIInput();
     midiInput.onMIDIMessage = function (data) {
+        console.log("got a midi msg");
         msg = new MIDI_Message(data.data);
 
         // Key display
