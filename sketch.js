@@ -43,7 +43,7 @@ function setup () {
 
         // Grow the tree
         if (msg.type === msg.NOTE_ON) {
-            fill(0);
+            fill(254, 127, 156);
             ellipse(width/2, height/2, 300, 300);
             
         } else if (msg.type === msg.NOTE_OFF) {
