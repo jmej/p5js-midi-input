@@ -34,7 +34,6 @@ function setup () {
 
     midiInput = new MIDIInput();
     midiInput.onMIDIMessage = function (data) {
-        console.log("got a midi msg");
         msg = new MIDI_Message(data.data);
 
         // Key display
@@ -44,6 +43,7 @@ function setup () {
 
         // Grow the tree
         if (msg.type === msg.NOTE_ON) {
+            ellipse(width/2, height/2, 300, 300);
             
         } else if (msg.type === msg.NOTE_OFF) {
 
